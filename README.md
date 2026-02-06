@@ -16,12 +16,12 @@
 ### Explantation for thematic map:
 
 ## Tileset 3- Basemap with Crime Data
-![Second Thematic Map]()
+![Third Basemap with crime data]()
 
 ### Explatation for Basemap with Crime Data
 
 ## Tileset 4- Crime Theme
-![Second Thematic Map]()
+![Fourth Crime Theme]()
 
 ### Explatation of Crime Theme
 
