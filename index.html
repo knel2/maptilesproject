@@ -103,6 +103,54 @@ map.addLayer({
     }
 });
 
+map.on('idle', () => {
+    if (!map.getLayer('base') || !map.getLayer('thematic') || !map.getLayer('crimeb') || !map.getLayer('theme')) {
+      return;
+    }
+
+    const toggleableLayerIds = ['base', 'thematic', 'crimeb', 'theme'];
+
+      for (const id of toggleableLayerIds) {
+          if (document.getElementById(id)) {
+                  continue;
+          }
+
+          // Create a link.
+                const link = document.createElement('a');
+                link.id = id;
+                link.href = '#';
+                link.textContent = id;
+                link.className = map.getLayoutProperty(id, 'visibility') === 'visible' ? 'active' : '';
+
+                link.onclick = function (e) {
+                    const clickedLayer = this.textContent;
+                    e.preventDefault();
+
+                    e.stopPropagation();
+
+                    const visibility = map.getLayoutProperty(
+                        clickedLayer,
+                        'visibility'
+                    );
+
+
+                    if (visibility === 'visible') {
+                        map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+                        this.className = '';
+                    } else { //otherise, it will be turned on.
+                        this.className = 'active';
+                        map.setLayoutProperty(
+                            clickedLayer,
+                            'visibility',
+                            'visible'
+                        );
+                    }
+                };
+
+                const layers = document.getElementById('menu');
+                layers.appendChild(link);
+            }
+        });
 });
 </script>
 </body>
