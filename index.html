@@ -21,26 +21,88 @@ body { margin: 0; padding: 0; }
         center: [-122.33, 47.61],
         zoom: 11
     });
+
   map.on('load', () => {
-  map.addSource('uw-tiles', {
+  map.addSource('basemap-tiles', {
     type: 'raster',
     tiles: [
       'assets/uw/{z}/{x}/{y}.png'
     ],
     tileSize: 256,
-    attribution: 'Map tiles designed by Bo Zhao'
+    attribution: 'Map tiles designed by Katherine'
   });
 
-  map.addLayer({
-    id: 'uw',
+map.addSource('thematic-crime-tile', {
     type: 'raster',
-    source: 'uw-tiles',
-    layout: {
-      // 'visibility': 'none'
+    tiles: [
+      'assets/uw/{z}/{x}/{y}.png'
+    ],
+    tileSize: 256,
+    attribution: 'Map tiles designed by Katherine'
+  });
+
+map.addSource('crime-base-tile', {
+    type: 'raster',
+    tiles: [
+      'assets/uw/{z}/{x}/{y}.png'
+    ],
+    tileSize: 256,
+    attribution: 'Map tiles designed by Katherine'
+});
+
+map.addSource('theme-tile', {
+    type: 'raster',
+    tiles: [
+      'assets/uw/{z}/{x}/{y}.png'
+    ],
+    tileSize: 256,
+    attribution: 'Map tiles designed by Katherine'
+});
+
+map.addLayer({
+  id: 'base',
+  type: 'raster',
+  source: 'basemap-tiles',
+  layout: {
+      'visibility': 'none'
       // Uncomment the line above to hide this layer on initial load.
       // This is useful when you add multiple tile layers.
     }
   });
+
+map.addLayer({
+  id: 'thematic',
+  type: 'raster',
+  source: 'thematic-crime-tile',
+  layout: {
+      'visibility': 'none'
+      // Uncomment the line above to hide this layer on initial load.
+      // This is useful when you add multiple tile layers.
+    }
+});
+
+map.addLayer({
+  id: 'crimeb',
+  type: 'raster',
+  source: 'crime-base-tile',
+  layout: {
+      'visibility': 'none'
+      // Uncomment the line above to hide this layer on initial load.
+      // This is useful when you add multiple tile layers.
+    }
+});
+
+map.addLayer({
+  id: 'theme',
+  type: 'raster',
+  source: 'theme-tile',
+  layout: {
+      'visibility': 'none'
+      // Uncomment the line above to hide this layer on initial load.
+      // This is useful when you add multiple tile layers.
+    }
+});
+
 });
 </script>
 </body>
