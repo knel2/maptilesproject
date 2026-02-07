@@ -1,6 +1,6 @@
 # Crime Data in Seattle from September 2025 - Feburary 2026
 ### Katherine Escoto Licona
-[View Tileset Map](index.html)
+[Crime Dataset Tileset](https://knel2.github.io/maptilesproject/)
 ## Summary
 ### For the tileset that I made I decided to look at the data from the City of Seattle portal named [SPD Crime Data: 2008-Present](https://data.seattle.gov/Public-Safety/SPD-Crime-Data-2008-Present/tazs-3rd5/about_data) due to it being from 2008- Present I desided to condense it into a much smaller dataset since it was way to large and would take alot of space on the map. This condesed the dataset completly making way more easier to manage. With this in mind I have 4 tileset maps that include the base map, the thematic crime map, crime data with basemap and lastly the crime theme. For each of the tilesets I ended up having 10 min- 15 max as zoom level.
 
