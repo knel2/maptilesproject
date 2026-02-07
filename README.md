@@ -18,7 +18,7 @@
 ## Tileset 3- Basemap with Crime Data
 ![Third Basemap with crime data](img/basemapwdata.jpg)
 
-### Exmplantion for Basemap with crime data: With this basemap and the crime we can see the larger
+### Exmplantion for Basemap with crime data: With this basemap and the crime we can see the contrast of color to higlight the data with the map.
 
 ## Tileset 4- Public Safety Theme
 ![Fourth Crime Theme](img/publicsafetytheme.jpg)
