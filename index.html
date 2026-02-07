@@ -89,7 +89,7 @@ body {
 map.addSource('thematic-crime-tile', {
     type: 'raster',
     tiles: [
-      'assets/thematic_tiles_map/{z}/{x}/{y}.png'
+      'assets/thematicdata/{z}/{x}/{y}.png'
     ],
     tileSize: 256,
     attribution: 'Map tiles designed by Katherine'
@@ -98,7 +98,7 @@ map.addSource('thematic-crime-tile', {
 map.addSource('crime-base-tile', {
     type: 'raster',
     tiles: [
-      'assets/Basemap_crime_data/{z}/{x}/{y}.png'
+      'assets/basemapwdata/{z}/{x}/{y}.png'
     ],
     tileSize: 256,
     attribution: 'Map tiles designed by Katherine'
@@ -152,8 +152,6 @@ map.addLayer({
   source: 'theme-tile',
   layout: {
       'visibility': 'none'
-      // Uncomment the line above to hide this layer on initial load.
-      // This is useful when you add multiple tile layers.
     }
 });
 
