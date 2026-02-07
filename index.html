@@ -10,9 +10,67 @@
 <style>
 body { margin: 0; padding: 0; }
 #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* the style of the layer control menu */
+        #menu {
+            background: #fff;
+            position: absolute;
+            z-index: 1;
+            top: 10px;
+            right: 10px;
+            border-radius: 3px;
+            width: 120px;
+            border: 1px solid rgba(0, 0, 0, 0.4);
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        /* each layer on the menu */
+        #menu a {
+            font-size: 13px;
+            color: #404040;
+            display: block;
+            margin: 0;
+            padding: 0;
+            padding: 10px;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+            text-align: center;
+        }
+
+        /* the last item of the layer items will not include a seperator */
+        #menu a:last-child {
+            border: none;
+        }
+
+        /* change color and background color while a pointer is on an hybrid link. */
+        #menu a:hover {
+            background-color: #f8f8f8;
+            color: #404040;
+        }
+
+        #menu a.active {
+            background-color: #3887be;
+            color: #ffffff;
+        }
+
+        #menu a.active:hover {
+            background: #3074a4;
+        }
 </style>
 </head>
 <body>
+  <nav id="menu"></nav>
   <div id = 'map'></div>
 <script>
    mapboxgl.accessToken = 'pk.eyJ1Ijoia25lbDIiLCJhIjoiY21rdTlkYmx5MThyZjNmcHVrMDYzdXJ4dyJ9.HrXpvWOlXxo7fGCGnGQG6A';
@@ -26,7 +84,7 @@ body { margin: 0; padding: 0; }
   map.addSource('basemap-tiles', {
     type: 'raster',
     tiles: [
-      'assets/uw/{z}/{x}/{y}.png'
+      'assets/Basemap/{z}/{x}/{y}.png'
     ],
     tileSize: 256,
     attribution: 'Map tiles designed by Katherine'
@@ -35,7 +93,7 @@ body { margin: 0; padding: 0; }
 map.addSource('thematic-crime-tile', {
     type: 'raster',
     tiles: [
-      'assets/uw/{z}/{x}/{y}.png'
+      'assets/thematic_tiles_map/{z}/{x}/{y}.png'
     ],
     tileSize: 256,
     attribution: 'Map tiles designed by Katherine'
@@ -44,7 +102,7 @@ map.addSource('thematic-crime-tile', {
 map.addSource('crime-base-tile', {
     type: 'raster',
     tiles: [
-      'assets/uw/{z}/{x}/{y}.png'
+      'assets/Basemap_crime_data/{z}/{x}/{y}.png'
     ],
     tileSize: 256,
     attribution: 'Map tiles designed by Katherine'
@@ -53,7 +111,7 @@ map.addSource('crime-base-tile', {
 map.addSource('theme-tile', {
     type: 'raster',
     tiles: [
-      'assets/uw/{z}/{x}/{y}.png'
+      'assets/publicsafetytheme/{z}/{x}/{y}.png'
     ],
     tileSize: 256,
     attribution: 'Map tiles designed by Katherine'
@@ -71,7 +129,7 @@ map.addLayer({
   });
 
 map.addLayer({
-  id: 'thematic',
+  id: 'thematic crime',
   type: 'raster',
   source: 'thematic-crime-tile',
   layout: {
@@ -82,7 +140,7 @@ map.addLayer({
 });
 
 map.addLayer({
-  id: 'crimeb',
+  id: 'Basemapcrime',
   type: 'raster',
   source: 'crime-base-tile',
   layout: {
@@ -104,11 +162,11 @@ map.addLayer({
 });
 
 map.on('idle', () => {
-    if (!map.getLayer('base') || !map.getLayer('thematic') || !map.getLayer('crimeb') || !map.getLayer('theme')) {
+    if (!map.getLayer('base') || !map.getLayer('thematic crime') || !map.getLayer('Basemapcrime') || !map.getLayer('theme')) {
       return;
     }
 
-    const toggleableLayerIds = ['base', 'thematic', 'crimeb', 'theme'];
+    const toggleableLayerIds = ['base', 'thematic crime', 'Basemapcrime', 'theme'];
 
       for (const id of toggleableLayerIds) {
           if (document.getElementById(id)) {
